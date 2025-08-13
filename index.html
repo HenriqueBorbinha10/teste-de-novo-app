@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TIKTOK ROBOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; }
+    .bg-pink-custom { background: #f43f5e; }
+    .btn-bar { display: flex; flex-direction: row; gap: 0.5rem; width: 100%; justify-content: center; }
+    .btn-bar > button { flex: 1 1 0; font-size: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; white-space: nowrap; }
+    @media (max-width: 540px) {
+      .btn-bar { flex-direction: column !important; gap: 0.5rem !important; }
+      .btn-bar > button { width: 100%; }
+    }
+    .option-btn {
+      padding: 0.32rem 0.5rem !important;
+      font-size: 0.91rem !important;
+      min-width: 0;
+      border-radius: 0.5rem !important;
+    }
+    .option-btn.selected {
+      background: #f43f5e !important;
+      color: #fff !important;
+    }
+    .count-btn.selected {
+      background: #2bfcf8 !important;
+      color: #18181b !important;
+    }
+    .video-label-pink {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.25rem 0.25rem;
+      margin-left: 0;
+      margin-bottom: 0.55rem;
+      letter-spacing: 0.2px;
+      display: inline-block;
+      text-align: center;
+      min-width: 90px;
+      max-width: 95%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .video-box { min-height: 56px; }
+    .processed-label { color: #34d399; font-weight: 600; font-size: 0.87rem; margin-left: 2px; }
+    .processed-bar-small {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.18rem 0.9rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0;
+      display: inline-block;
+      letter-spacing: 0.1px;
+      min-width: 78px;
+      max-width: 180px;
+      text-align: center;
+    }
+    .video-type.comment-replies {
+      font-size: 0.85rem !important;
+      padding-left: 0.3rem !important;
+      padding-right: 0.3rem !important;
+      letter-spacing: -0.5px;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+
+<!-- ETAPA 01 -->
+<div id="etapa01" class="flex items-center justify-center min-h-screen px-2 sm:px-6">
+  <div class="w-full max-w-md sm:max-w-lg px-2 sm:px-4 space-y-0">
+    <div style="margin-top: 10px;">
+      <div class="flex justify-center">
+        <img src="imagens/logo.png" alt="Logo" class="w-42" />
+      </div>
+    </div>
+    <div style="margin-bottom: 10px;"></div>
+    <div style="margin-top: 0px;"></div>
+    <h2 class="text-center text-2xl font-semibold">🎥 VIDEO PANEL</h2>
+    <div style="margin-bottom: 18px;"></div>
+    <div style="margin-top: 0px;"></div>
+    <div class="bg-[#121212] rounded-xl p-4 space-y-2">
+      <div id="toggle-handle" class="flex justify-between items-center cursor-pointer">
+        <label class="font-bold text-lg">Enter your TikTok</label><span>﹀</span>
+      </div>
+      <input id="handle" type="text" placeholder="@your_tiktok_handle" class="w-full bg-[#1f1f1f] p-3 rounded-md focus:outline-none hidden" />
+    </div>
+    <div style="margin-bottom: 17px;"></div>
+    <div style="margin-top: 0px;"></div>
+    <!-- 2 column grid, "Comment Replies" in col 1, menor texto -->
+    <div class="bg-[#121212] rounded-xl p-4 space-y-4">
+      <div id="toggle-types" class="flex justify-between items-center cursor-pointer">
+        <label class="font-bold text-lg">Select video type</label><span>﹀</span>
+      </div>
+      <div id="types-wrapper" class="rounded-lg p-3 space-y-3 hidden">
+        <div id="types-options" class="grid grid-cols-2 gap-2">
+          <button class="video-type option-btn bg-[#1a1a1a]">Motivational</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Comedy</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Curiosities</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Reactions</button>
+          <button class="video-type option-btn comment-replies bg-[#1a1a1a]" style="grid-column: span 1 / span 1;">Comment Replies</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Reviews</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Trends</button>
+        </div>
+        <p id="video-count" class="text-gray-400 text-sm hidden">Selected: 0</p>
+      </div>
+    </div>
+    <div style="margin-bottom: 17px;"></div>
+    <div style="margin-top: 0px;"></div>
+    <div class="bg-[#121212] rounded-xl p-4 space-y-4">
+      <div id="toggle-count" class="flex justify-between items-center cursor-pointer">
+        <label class="font-bold text-lg">How many videos to post per day</label><span>﹀</span>
+      </div>
+      <div id="count-wrapper" class="rounded-lg p-3 space-y-3 hidden">
+        <div id="count-options" class="grid grid-cols-5 gap-2">
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">1</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">2</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">3</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">4</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">5</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">6</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">7</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">8</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">9</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">10</button>
+        </div>
+        <p id="count-result" class="text-gray-400 text-sm hidden">Selected: 0</p>
+      </div>
+    </div>
+    <div style="margin-bottom: 17px;"></div>
+    <div style="margin-top: 10px;"></div>
+    <button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl">CONTINUE</button>
+    <div style="margin-bottom: 18px;"></div>
+    <div style="margin-top: 0px;"></div>
+    <p id="info" class="text-center text-sm text-gray-400">
+      Please fill out your TikTok profile, select at least one video type, and choose videos per day to continue.
+    </p>
+    <div style="margin-bottom: 0px;"></div>
+  </div>
+</div>
+
+<!-- ETAPA 02 -->
+<div id="etapa02" class="hidden min-h-screen flex flex-col items-center justify-center px-2 sm:px-6">
+  <div class="w-full max-w-md sm:max-w-lg py-8 mx-auto text-center">
+    <h2 class="text-2xl font-semibold mb-5">🌀 Sending videos...</h2>
+    <img src="imagens/tiktok_logo.png" alt="TikTok Logo" width="100"
+      class="mx-auto mb-4" />
+    <p id="phrase-wait" class="mb-3">⏳ Wait, generating videos...</p>
+    <div class="progress-bar mb-2" style="width:100%;height:8px;background:#1a1a1a;border-radius:10px;overflow:hidden;">
+      <div id="progress" class="progress" style="width:0%;height:100%;background:linear-gradient(90deg,#ff5e62,#00bfff);border-radius:10px;transition:width 0.5s ease-in-out;"></div>
+    </div>
+    <div class="w-full flex justify-between mt-2 text-xs sm:text-base mb-2">
+      <span id="processando">Processing...</span>
+      <span id="percentage">0%</span>
+    </div>
+    <p id="phrase1" class="sub-text hidden text-xs mb-2">📊 Analyzing your content preferences...</p>
+    <p id="phrase2" class="sub-text hidden text-xs mb-2">🤖 Generating creative ideas...</p>
+    <p id="phrase3" class="sub-text hidden text-xs mb-2">✨ Finalizing video concepts...</p>
+  </div>
+</div>
+
+<!-- ETAPA 03 -->
+<div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-start py-10 px-2 bg-black text-white">
+  <main class="w-full max-w-2xl mx-auto flex flex-col items-center">
+
+    <div style="margin-top: 1px;"></div>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-0 text-center">GENERATED VIDEOS</h1>
+    <div style="margin-bottom: 20px;"></div>
+    <div style="margin-top: 0px;"></div>
+    <p id="subtitle" class="text-gray-300 text-base sm:text-lg mb-0 text-center">
+      Based on selected video types: <span id="selectedTypeText" class="font-semibold">Curiosities</span>
+    </p>
+    <div style="margin-bottom: 25px;"></div>
+    <div id="videos-container" class="w-full flex flex-col gap-4 mb-8"></div>
+    <div style="margin-top: 18px;"></div>
+    <div class="btn-bar">
+      <button class="border border-cyan-400 hover:bg-cyan-900 hover:bg-opacity-30 text-cyan-300 font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
+        onclick="location.reload()">
+        <svg class="w-4 h-4 mr-1 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A9 9 0 106.62 6.623"/>
+        </svg>
+        Generate more videos
+      </button>
+      <button class="bg-pink-custom hover:bg-pink-600 text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
+        onclick="window.open('https://www.rendahbx.online/tiktokrobot','_blank')">
+        Publish videos
+      </button>
+      <button class="bg-[#222] hover:bg-[#333] text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
+        onclick="voltarParaEtapa01()">
+        Back to configuration
+      </button>
+    </div>
+    <div style="margin-bottom: 0px;"></div>
+  </main>
+</div>
+
+<script>
+  // ETAPA 1
+  const handleInput = document.getElementById("handle");
+  const typeButtons = document.querySelectorAll(".video-type");
+  const continueBtn = document.getElementById("continue");
+  const infoText = document.getElementById("info");
+  const toggleHandle = document.getElementById("toggle-handle");
+  const toggleTypes = document.getElementById("toggle-types");
+  const toggleCount = document.getElementById("toggle-count");
+  const typesWrapper = document.getElementById("types-wrapper");
+  const countWrapper = document.getElementById("count-wrapper");
+  const videoCountText = document.getElementById("video-count");
+  const countResult = document.getElementById("count-result");
+  let selectedTypes = new Set();
+  let selectedCount = null;
+
+  toggleHandle.addEventListener("click", () => handleInput.classList.toggle("hidden"));
+  toggleTypes.addEventListener("click", () => {
+    typesWrapper.classList.toggle("hidden");
+    videoCountText.classList.toggle("hidden");
+  });
+  toggleCount.addEventListener("click", () => {
+    countWrapper.classList.toggle("hidden");
+    countResult.classList.toggle("hidden");
+  });
+
+  typeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const value = btn.textContent.trim();
+      btn.classList.toggle("selected");
+      if (selectedTypes.has(value)) {
+        selectedTypes.delete(value);
+      } else {
+        selectedTypes.add(value);
+      }
+      videoCountText.textContent = `Selected: ${selectedTypes.size}`;
+      validate();
+    });
+  });
+
+  document.getElementById("count-options").addEventListener("click", event => {
+    const btn = event.target.closest(".video-count");
+    if (!btn) return;
+    selectedCount = parseInt(btn.textContent.trim());
+    document.querySelectorAll(".video-count").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    countResult.textContent = `Selected: ${selectedCount}`;
+    validate();
+  });
+
+  handleInput.addEventListener("input", validate);
+
+  function validate() {
+    const filled = handleInput.value.trim() !== "" && selectedTypes.size > 0 && selectedCount !== null;
+    continueBtn.disabled = !filled;
+    infoText.classList.toggle("hidden", filled);
+    continueBtn.className = filled
+      ? "w-full py-3 bg-pink-custom text-white font-bold rounded-xl"
+      : "w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl";
+  }
+
+  continueBtn.addEventListener("click", () => {
+    localStorage.setItem("tiktokHandle", handleInput.value.trim());
+    localStorage.setItem("videoTypes", JSON.stringify([...selectedTypes]));
+    localStorage.setItem("videosPerDay", selectedCount);
+    document.getElementById("etapa01").classList.add("hidden");
+    mostrarEtapa02();
+  });
+
+  // ETAPA 2
+  function mostrarEtapa02() {
+    document.getElementById("etapa02").classList.remove("hidden");
+    let width = 0;
+    const progress = document.getElementById("progress");
+    const percent = document.getElementById("percentage");
+    const total = 100;
+    percent.textContent = "0%";
+    progress.style.width = "0%";
+    ["phrase1","phrase2","phrase3"].forEach(id=>{
+      document.getElementById(id).classList.add("hidden");
+      document.getElementById(id).classList.remove("fade-in");
+    });
+    const int = setInterval(() => {
+      if (width >= total) {
+        clearInterval(int);
+        mostrarEtapa03();
+      } else {
+        width++;
+        progress.style.width = width + "%";
+        percent.textContent = width + "%";
+      }
+    }, 30);
+    setTimeout(() => mostrarFrase("phrase1"), 1000);
+    setTimeout(() => mostrarFrase("phrase2"), 2000);
+    setTimeout(() => mostrarFrase("phrase3"), 3000);
+  }
+  function mostrarFrase(id) {
+    const el = document.getElementById(id);
+    el.classList.remove("hidden");
+    el.classList.add("fade-in");
+  }
+
+  // ETAPA 3
+  function mostrarEtapa03() {
+    document.getElementById("etapa02").classList.add("hidden");
+    document.getElementById("etapa03").classList.remove("hidden");
+    carregarVideos();
+  }
+
+  function carregarVideos() {
+    const container = document.getElementById("videos-container");
+    container.innerHTML = "";
+    const videosPerDay = parseInt(localStorage.getItem("videosPerDay")) || 3;
+    let typeArray = [];
+    try {
+      typeArray = JSON.parse(localStorage.getItem("videoTypes")) || ["Curiosities"];
+    } catch { typeArray = ["Curiosities"]; }
+    document.getElementById('selectedTypeText').textContent = typeArray.length > 0 ? typeArray.join(", ") : "Curiosities";
+    for (let i = 1; i <= videosPerDay; i++) {
+      const videoDiv = document.createElement("div");
+      videoDiv.className = "bg-[#18181b] rounded-xl px-5 py-4 video-box flex flex-col justify-start items-start shadow relative";
+      videoDiv.innerHTML = `
+        <span class="video-label-pink">Vídeo ${i}</span>
+        <span class="processed-label mt-2">✅ PROCESSED</span>
+      `;
+      container.appendChild(videoDiv);
+    }
+  }
+
+  function voltarParaEtapa01() {
+    document.getElementById("etapa03").classList.add("hidden");
+    document.getElementById("etapa01").classList.remove("hidden");
+  }
+</script>
+</body>
+</html>
