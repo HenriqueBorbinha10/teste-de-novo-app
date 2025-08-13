@@ -1,453 +1,434 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    body {background-color: #000000}
-    p.p1 {margin: 0.0px 0.0px 13.3px 0.0px; font: 14.7px Arial; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; background-color: #ffff0b}
+  <meta charset="UTF-8" />
+  <title>TIKTOK ROBOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; }
+    .bg-pink-custom { background: #f43f5e; }
+    .option-btn {
+      padding: 0.32rem 0.5rem !important;
+      font-size: 0.91rem !important;
+      min-width: 0;
+      border-radius: 0.5rem !important;
+    }
+    .option-btn.selected {
+      background: #f43f5e !important;
+      color: #fff !important;
+    }
+    .count-btn.selected {
+      background: #2bfcf8 !important;
+      color: #18181b !important;
+    }
+    .caixa-saldo {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      background: #232326;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+      max-width: 100vw;
+    }
+    @media (max-width: 540px) {
+      .caixa-saldo {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.75rem 0.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .balance-box-small {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+      }
+    }
+    .balance-box-small {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.4rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.18rem 0.7rem;
+      min-width: 85px;
+      text-align: center;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px 0 #f43f5e22;
+      transition: background 0.2s, color 0.2s;
+    }
+    .video-label-pink {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.25rem 0.25rem;
+      margin-left: 0;
+      margin-bottom: 0.55rem;
+      letter-spacing: 0.2px;
+      display: inline-block;
+      text-align: center;
+      min-width: 90px;
+      max-width: 95%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .video-box { min-height: 56px; }
+    .processed-label { color: #34d399; font-weight: 600; font-size: 0.87rem; margin-left: 2px; }
+    .processed-bar-small {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.18rem 0.9rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0;
+      display: inline-block;
+      letter-spacing: 0.1px;
+      min-width: 78px;
+      max-width: 180px;
+      text-align: center;
+    }
+    .video-type.comment-replies {
+      font-size: 0.85rem !important;
+      padding-left: 0.3rem !important;
+      padding-right: 0.3rem !important;
+      letter-spacing: -0.5px;
+    }
+    .btn-bar { display: flex; flex-direction: row; gap: 0.5rem; width: 100%; justify-content: center; }
+    .btn-bar > button { flex: 1 1 0; font-size: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; white-space: nowrap; }
+    @media (max-width: 540px) {
+      .btn-bar { flex-direction: column !important; gap: 0.5rem !important; }
+      .btn-bar > button { width: 100%; }
+    }
   </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta charset="UTF-8" /&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;title&gt;TIKTOK ROBOT&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
-<p class="p1"><span class="s1">    body { background: #000; color: #fff; font-family: Arial, sans-serif; }</span></p>
-<p class="p1"><span class="s1">    .bg-pink-custom { background: #f43f5e; }</span></p>
-<p class="p1"><span class="s1">    .option-btn {</span></p>
-<p class="p1"><span class="s1">      padding: 0.32rem 0.5rem !important;</span></p>
-<p class="p1"><span class="s1">      font-size: 0.91rem !important;</span></p>
-<p class="p1"><span class="s1">      min-width: 0;</span></p>
-<p class="p1"><span class="s1">      border-radius: 0.5rem !important;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .option-btn.selected {</span></p>
-<p class="p1"><span class="s1">      background: #f43f5e !important;</span></p>
-<p class="p1"><span class="s1">      color: #fff !important;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .count-btn.selected {</span></p>
-<p class="p1"><span class="s1">      background: #2bfcf8 !important;</span></p>
-<p class="p1"><span class="s1">      color: #18181b !important;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1"> </span><span class="s2">   .caixa-saldo {</span></p>
-<p class="p1"><span class="s2">      width: 100%;</span></p>
-<p class="p1"><span class="s2">      display: flex;</span></p>
-<p class="p1"><span class="s2">      flex-direction: row;</span></p>
-<p class="p1"><span class="s2">      justify-content: space-between;</span></p>
-<p class="p1"><span class="s2">      align-items: center;</span></p>
-<p class="p1"><span class="s2">      background: #232326;</span></p>
-<p class="p1"><span class="s2">      border-radius: 0.75rem;</span></p>
-<p class="p1"><span class="s2">      padding: 0.75rem 1rem;</span></p>
-<p class="p1"><span class="s2">      margin-top: 1.5rem;</span></p>
-<p class="p1"><span class="s2">      margin-bottom: 1.5rem;</span></p>
-<p class="p1"><span class="s2">      box-sizing: border-box;</span></p>
-<p class="p1"><span class="s2">      max-width: 100vw;</span></p>
-<p class="p1"><span class="s2">    }</span></p>
-<p class="p1"><span class="s2">    @media (max-width: 540px) {</span></p>
-<p class="p1"><span class="s2">      .caixa-saldo {</span></p>
-<p class="p1"><span class="s2">        flex-direction: column;</span></p>
-<p class="p1"><span class="s2">        align-items: flex-start;</span></p>
-<p class="p1"><span class="s2">        padding: 0.75rem 0.5rem;</span></p>
-<p class="p1"><span class="s2">        margin-top: 0.75rem;</span></p>
-<p class="p1"><span class="s2">        margin-bottom: 0.75rem;</span></p>
-<p class="p1"><span class="s2">      }</span></p>
-<p class="p1"><span class="s2">      .balance-box-small {</span></p>
-<p class="p1"><span class="s2">        margin-left: 0;</span></p>
-<p class="p1"><span class="s2">        margin-top: 0.5rem;</span></p>
-<p class="p1"><span class="s2">        width: 100%;</span></p>
-<p class="p1"><span class="s2">      }</span></p>
-<p class="p1"><span class="s2">    }</span></p>
-<p class="p1"><span class="s2">    .balance-box-small {</span></p>
-<p class="p1"><span class="s2">      background: #f43f5e;</span></p>
-<p class="p1"><span class="s2">      color: #fff;</span></p>
-<p class="p1"><span class="s2">      border-radius: 0.4rem;</span></p>
-<p class="p1"><span class="s2">      font-size: 0.86rem;</span></p>
-<p class="p1"><span class="s2">      font-weight: 600;</span></p>
-<p class="p1"><span class="s2">      padding: 0.18rem 0.7rem;</span></p>
-<p class="p1"><span class="s2">      min-width: 85px;</span></p>
-<p class="p1"><span class="s2">      text-align: center;</span></p>
-<p class="p1"><span class="s2">      letter-spacing: 0.5px;</span></p>
-<p class="p1"><span class="s2">      box-shadow: 0 2px 8px 0 #f43f5e22;</span></p>
-<p class="p1"><span class="s2">      transition: background 0.2s, color 0.2s;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .video-label-pink {</span></p>
-<p class="p1"><span class="s1">      background: #f43f5e;</span></p>
-<p class="p1"><span class="s1">      color: #fff;</span></p>
-<p class="p1"><span class="s1">      border-radius: 0.5rem;</span></p>
-<p class="p1"><span class="s1">      font-size: 0.92rem;</span></p>
-<p class="p1"><span class="s1">      font-weight: 600;</span></p>
-<p class="p1"><span class="s1">      padding: 0.25rem 0.25rem;</span></p>
-<p class="p1"><span class="s1">      margin-left: 0;</span></p>
-<p class="p1"><span class="s1">      margin-bottom: 0.55rem;</span></p>
-<p class="p1"><span class="s1">      letter-spacing: 0.2px;</span></p>
-<p class="p1"><span class="s1">      display: inline-block;</span></p>
-<p class="p1"><span class="s1">      text-align: center;</span></p>
-<p class="p1"><span class="s1">      min-width: 90px;</span></p>
-<p class="p1"><span class="s1">      max-width: 95%;</span></p>
-<p class="p1"><span class="s1">      white-space: nowrap;</span></p>
-<p class="p1"><span class="s1">      text-overflow: ellipsis;</span></p>
-<p class="p1"><span class="s1">      overflow: hidden;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .video-box { min-height: 56px; }</span></p>
-<p class="p1"><span class="s1">    .processed-label { color: #34d399; font-weight: 600; font-size: 0.87rem; margin-left: 2px; }</span></p>
-<p class="p1"><span class="s1">    .processed-bar-small {</span></p>
-<p class="p1"><span class="s1">      background: #f43f5e;</span></p>
-<p class="p1"><span class="s1">      color: #fff;</span></p>
-<p class="p1"><span class="s1">      border-radius: 0.5rem;</span></p>
-<p class="p1"><span class="s1">      font-size: 0.92rem;</span></p>
-<p class="p1"><span class="s1">      font-weight: 600;</span></p>
-<p class="p1"><span class="s1">      padding: 0.18rem 0.9rem;</span></p>
-<p class="p1"><span class="s1">      margin-top: 0.4rem;</span></p>
-<p class="p1"><span class="s1">      margin-bottom: 0;</span></p>
-<p class="p1"><span class="s1">      display: inline-block;</span></p>
-<p class="p1"><span class="s1">      letter-spacing: 0.1px;</span></p>
-<p class="p1"><span class="s1">      min-width: 78px;</span></p>
-<p class="p1"><span class="s1">      max-width: 180px;</span></p>
-<p class="p1"><span class="s1">      text-align: center;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .video-type.comment-replies {</span></p>
-<p class="p1"><span class="s1">      font-size: 0.85rem !important;</span></p>
-<p class="p1"><span class="s1">      padding-left: 0.3rem !important;</span></p>
-<p class="p1"><span class="s1">      padding-right: 0.3rem !important;</span></p>
-<p class="p1"><span class="s1">      letter-spacing: -0.5px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .btn-bar { display: flex; flex-direction: row; gap: 0.5rem; width: 100%; justify-content: center; }</span></p>
-<p class="p1"><span class="s1">    .btn-bar &gt; button { flex: 1 1 0; font-size: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; white-space: nowrap; }</span></p>
-<p class="p1"><span class="s1">    @media (max-width: 540px) {</span></p>
-<p class="p1"><span class="s1">      .btn-bar { flex-direction: column !important; gap: 0.5rem !important; }</span></p>
-<p class="p1"><span class="s1">      .btn-bar &gt; button { width: 100%; }</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">  &lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body class="bg-black text-white min-h-screen"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;!-- ETAPA 01 --&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="etapa01" class="flex items-center justify-center min-h-screen px-2 sm:px-6"&gt;</span></p>
-<p class="p1"><span class="s2">  &lt;div class="w-full max-w-md sm:max-w-lg px-2 sm:px-4"&gt;</span></p>
-<p class="p1"><span class="s2">    &lt;div class="caixa-saldo" id="caixaSaldo01"&gt;</span></p>
-<p class="p1"><span class="s2">      &lt;span class="text-sm font-medium leading-tight"&gt;</span></p>
-<p class="p1"><span class="s2">        Caixa de saldo: espaçamento superior, espaçamento inferior</span></p>
-<p class="p1"><span class="s2">      &lt;/span&gt;</span></p>
-<p class="p1"><span class="s2">      &lt;span id="balance01" class="balance-box-small"&gt;BALANCE: U$ 10.75&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="flex justify-center"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;img src="imagens/logo.png" alt="Logo" class="w-42" /&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2 class="text-center text-2xl font-semibold mt-4"&gt;🎥 VIDEO PANEL&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="bg-[#121212] rounded-xl p-4 space-y-2 mt-4"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div id="toggle-handle" class="flex justify-between items-center cursor-pointer"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;label class="font-bold text-lg"&gt;Enter your TikTok&lt;/label&gt;&lt;span&gt;﹀&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input id="handle" type="text" placeholder="@your_tiktok_handle" class="w-full bg-[#1f1f1f] p-3 rounded-md focus:outline-none hidden" /&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="bg-[#121212] rounded-xl p-4 space-y-4 mt-4"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div id="toggle-types" class="flex justify-between items-center cursor-pointer"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;label class="font-bold text-lg"&gt;Select video type&lt;/label&gt;&lt;span&gt;﹀&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div id="types-wrapper" class="rounded-lg p-3 space-y-3 hidden"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div id="types-options" class="grid grid-cols-2 gap-2"&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn bg-[#1a1a1a]"&gt;Motivational&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn bg-[#1a1a1a]"&gt;Comedy&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn bg-[#1a1a1a]"&gt;Curiosities&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn bg-[#1a1a1a]"&gt;Reactions&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn comment-replies bg-[#1a1a1a]" style="grid-column: span 1 / span 1;"&gt;Comment Replies&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn bg-[#1a1a1a]"&gt;Reviews&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-type option-btn bg-[#1a1a1a]"&gt;Trends&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p id="video-count" class="text-gray-400 text-sm hidden"&gt;Selected: 0&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="bg-[#121212] rounded-xl p-4 space-y-4 mt-4"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div id="toggle-count" class="flex justify-between items-center cursor-pointer"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;label class="font-bold text-lg"&gt;How many videos to post per day&lt;/label&gt;&lt;span&gt;﹀&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div id="count-wrapper" class="rounded-lg p-3 space-y-3 hidden"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div id="count-options" class="grid grid-cols-5 gap-2"&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;1&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;2&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;3&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;4&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;5&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;6&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;7&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;8&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;9&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;button class="video-count option-btn count-btn bg-[#1a1a1a]"&gt;10&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p id="count-result" class="text-gray-400 text-sm hidden"&gt;Selected: 0&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl mt-6"&gt;CONTINUE&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="info" class="text-center text-sm text-gray-400 mt-2 mb-2"&gt;</span></p>
-<p class="p1"><span class="s1">      Please fill out your TikTok profile, select at least one video type, and choose videos per day to continue.</span></p>
-<p class="p1"><span class="s1">    &lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;!-- ETAPA 02 --&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="etapa02" class="hidden min-h-screen flex flex-col items-center justify-center px-2 sm:px-6"&gt;</span></p>
-<p class="p1"><span class="s2">  &lt;div class="w-full max-w-md sm:max-w-lg py-8 mx-auto text-center"&gt;</span></p>
-<p class="p1"><span class="s2">    &lt;div class="caixa-saldo" id="caixaSaldo02"&gt;</span></p>
-<p class="p1"><span class="s2">      &lt;span class="text-sm font-medium leading-tight"&gt;</span></p>
-<p class="p1"><span class="s2">        Caixa de saldo: espaçamento superior, espaçamento inferior</span></p>
-<p class="p1"><span class="s2">      &lt;/span&gt;</span></p>
-<p class="p1"><span class="s2">      &lt;span id="balance02" class="balance-box-small"&gt;BALANCE: U$ 27.88&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2 class="text-2xl font-semibold mb-5"&gt;🌀 Sending videos...&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;img src="imagens/tiktok_logo.png" alt="TikTok Logo" width="100"</span></p>
-<p class="p1"><span class="s1">      class="mx-auto mb-4" /&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="phrase-wait" class="mb-3"&gt;⏳ Wait, generating videos...&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="progress-bar mb-2" style="width:100%;height:8px;background:#1a1a1a;border-radius:10px;overflow:hidden;"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div id="progress" class="progress" style="width:0%;height:100%;background:linear-gradient(90deg,#ff5e62,#00bfff);border-radius:10px;transition:width 0.5s ease-in-out;"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="w-full flex justify-between mt-2 text-xs sm:text-base mb-2"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;span id="processando"&gt;Processing...&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;span id="percentage"&gt;0%&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="phrase1" class="sub-text hidden text-xs mb-2"&gt;📊 Analyzing your content preferences...&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="phrase2" class="sub-text hidden text-xs mb-2"&gt;🤖 Generating creative ideas...&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="phrase3" class="sub-text hidden text-xs mb-2"&gt;✨ Finalizing video concepts...&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;!-- ETAPA 03 --&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-start py-10 px-2 bg-black text-white"&gt;</span></p>
-<p class="p1"><span class="s1">  </span><span class="s2">&lt;main class="w-full max-w-2xl mx-auto flex flex-col items-center"&gt;</span></p>
-<p class="p1"><span class="s2">    &lt;div class="caixa-saldo" id="caixaSaldo03"&gt;</span></p>
-<p class="p1"><span class="s2">      &lt;span class="text-sm font-medium leading-tight"&gt;</span></p>
-<p class="p1"><span class="s2">        Caixa de saldo: espaçamento superior, espaçamento inferior</span></p>
-<p class="p1"><span class="s2">      &lt;/span&gt;</span></p>
-<p class="p1"><span class="s2">      &lt;span id="balance03" class="balance-box-small"&gt;BALANCE: U$ 37.45&lt;/span&gt;</span></p>
-<p class="p1"><span class="s2">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h1 class="text-3xl sm:text-4xl font-bold mb-0 text-center"&gt;GENERATED VIDEOS&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="subtitle" class="text-gray-300 text-base sm:text-lg mb-0 text-center mt-3"&gt;</span></p>
-<p class="p1"><span class="s1">      Based on selected video types: &lt;span id="selectedTypeText" class="font-semibold"&gt;Curiosities&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div id="videos-container" class="w-full flex flex-col gap-4 mb-8 mt-6"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="btn-bar mt-4"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button class="border border-cyan-400 hover:bg-cyan-900 hover:bg-opacity-30 text-cyan-300 font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"</span></p>
-<p class="p1"><span class="s1">        onclick="generateMoreVideos()"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;svg class="w-4 h-4 mr-1 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A9 9 0 106.62 6.623"/&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/svg&gt;</span></p>
-<p class="p1"><span class="s1">        Generate more videos</span></p>
-<p class="p1"><span class="s1">      &lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button class="bg-pink-custom hover:bg-pink-600 text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"</span></p>
-<p class="p1"><span class="s1">        onclick="window.open('https://www.google.com','_blank')"&gt;</span></p>
-<p class="p1"><span class="s1">        Publish videos</span></p>
-<p class="p1"><span class="s1">      &lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button class="bg-[#222] hover:bg-[#333] text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"</span></p>
-<p class="p1"><span class="s1">        onclick="voltarParaEtapa01()"&gt;</span></p>
-<p class="p1"><span class="s1">        Back to configuration</span></p>
-<p class="p1"><span class="s1">      &lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/main&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p1"><span class="s1">  // ETAPA 1</span></p>
-<p class="p1"><span class="s1">  const handleInput = document.getElementById("handle");</span></p>
-<p class="p1"><span class="s1">  const typeButtons = document.querySelectorAll(".video-type");</span></p>
-<p class="p1"><span class="s1">  const continueBtn = document.getElementById("continue");</span></p>
-<p class="p1"><span class="s1">  const infoText = document.getElementById("info");</span></p>
-<p class="p1"><span class="s1">  const toggleHandle = document.getElementById("toggle-handle");</span></p>
-<p class="p1"><span class="s1">  const toggleTypes = document.getElementById("toggle-types");</span></p>
-<p class="p1"><span class="s1">  const toggleCount = document.getElementById("toggle-count");</span></p>
-<p class="p1"><span class="s1">  const typesWrapper = document.getElementById("types-wrapper");</span></p>
-<p class="p1"><span class="s1">  const countWrapper = document.getElementById("count-wrapper");</span></p>
-<p class="p1"><span class="s1">  const videoCountText = document.getElementById("video-count");</span></p>
-<p class="p1"><span class="s1">  const countResult = document.getElementById("count-result");</span></p>
-<p class="p1"><span class="s1">  let selectedTypes = new Set();</span></p>
-<p class="p1"><span class="s1">  let selectedCount = null;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  toggleHandle.addEventListener("click", () =&gt; handleInput.classList.toggle("hidden"));</span></p>
-<p class="p1"><span class="s1">  toggleTypes.addEventListener("click", () =&gt; {</span></p>
-<p class="p1"><span class="s1">    typesWrapper.classList.toggle("hidden");</span></p>
-<p class="p1"><span class="s1">    videoCountText.classList.toggle("hidden");</span></p>
-<p class="p1"><span class="s1">  });</span></p>
-<p class="p1"><span class="s1">  toggleCount.addEventListener("click", () =&gt; {</span></p>
-<p class="p1"><span class="s1">    countWrapper.classList.toggle("hidden");</span></p>
-<p class="p1"><span class="s1">    countResult.classList.toggle("hidden");</span></p>
-<p class="p1"><span class="s1">  });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  typeButtons.forEach(btn =&gt; {</span></p>
-<p class="p1"><span class="s1">    btn.addEventListener("click", () =&gt; {</span></p>
-<p class="p1"><span class="s1">      const value = btn.textContent.trim();</span></p>
-<p class="p1"><span class="s1">      btn.classList.toggle("selected");</span></p>
-<p class="p1"><span class="s1">      if (selectedTypes.has(value)) {</span></p>
-<p class="p1"><span class="s1">        selectedTypes.delete(value);</span></p>
-<p class="p1"><span class="s1">      } else {</span></p>
-<p class="p1"><span class="s1">        selectedTypes.add(value);</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">      videoCountText.textContent = `Selected: ${selectedTypes.size}`;</span></p>
-<p class="p1"><span class="s1">      validate();</span></p>
-<p class="p1"><span class="s1">    });</span></p>
-<p class="p1"><span class="s1">  });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  document.getElementById("count-options").addEventListener("click", event =&gt; {</span></p>
-<p class="p1"><span class="s1">    const btn = event.target.closest(".video-count");</span></p>
-<p class="p1"><span class="s1">    if (!btn) return;</span></p>
-<p class="p1"><span class="s1">    selectedCount = parseInt(btn.textContent.trim());</span></p>
-<p class="p1"><span class="s1">    document.querySelectorAll(".video-count").forEach(b =&gt; b.classList.remove("selected"));</span></p>
-<p class="p1"><span class="s1">    btn.classList.add("selected");</span></p>
-<p class="p1"><span class="s1">    countResult.textContent = `Selected: ${selectedCount}`;</span></p>
-<p class="p1"><span class="s1">    validate();</span></p>
-<p class="p1"><span class="s1">  });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  handleInput.addEventListener("input", validate);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  function validate() {</span></p>
-<p class="p1"><span class="s1">    const filled = handleInput.value.trim() !== "" &amp;&amp; selectedTypes.size &gt; 0 &amp;&amp; selectedCount !== null;</span></p>
-<p class="p1"><span class="s1">    continueBtn.disabled = !filled;</span></p>
-<p class="p1"><span class="s1">    infoText.classList.toggle("hidden", filled);</span></p>
-<p class="p1"><span class="s1">    continueBtn.className = filled</span></p>
-<p class="p1"><span class="s1">      ? "w-full py-3 bg-pink-custom text-white font-bold rounded-xl mt-6"</span></p>
-<p class="p1"><span class="s1">      : "w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl mt-6";</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  continueBtn.addEventListener("click", () =&gt; {</span></p>
-<p class="p1"><span class="s1">    localStorage.setItem("tiktokHandle", handleInput.value.trim());</span></p>
-<p class="p1"><span class="s1">    localStorage.setItem("videoTypes", JSON.stringify([...selectedTypes]));</span></p>
-<p class="p1"><span class="s1">    localStorage.setItem("videosPerDay", selectedCount);</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa01").classList.add("hidden");</span></p>
-<p class="p1"><span class="s1">    mostrarEtapa02();</span></p>
-<p class="p1"><span class="s1">  });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  // SALDO DINÂMICO (em todas etapas)</span></p>
-<p class="p1"><span class="s1">  let balance1 = 10.75;</span></p>
-<p class="p1"><span class="s1">  let balance2 = 27.88;</span></p>
-<p class="p1"><span class="s1">  let balance3 = 37.45;</span></p>
-<p class="p1"><span class="s1">  let interval1, interval2, interval3;</span></p>
-<p class="p1"><span class="s1">  let stepTime = 1500;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  function startBalance01() {</span></p>
-<p class="p1"><span class="s1">    clearInterval(interval1);</span></p>
-<p class="p1"><span class="s1">    document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;</span></p>
-<p class="p1"><span class="s1">    interval1 = setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1">      balance1 *= 1.2;</span></p>
-<p class="p1"><span class="s1">      document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;</span></p>
-<p class="p1"><span class="s1">    }, stepTime);</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p1"><span class="s1">  function startBalance02() {</span></p>
-<p class="p1"><span class="s1">    clearInterval(interval2);</span></p>
-<p class="p1"><span class="s1">    document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;</span></p>
-<p class="p1"><span class="s1">    interval2 = setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1">      balance2 *= 1.2;</span></p>
-<p class="p1"><span class="s1">      document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;</span></p>
-<p class="p1"><span class="s1">    }, stepTime);</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p1"><span class="s1">  function startBalance03() {</span></p>
-<p class="p1"><span class="s1">    clearInterval(interval3);</span></p>
-<p class="p1"><span class="s1">    document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;</span></p>
-<p class="p1"><span class="s1">    interval3 = setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1">      balance3 *= 1.2;</span></p>
-<p class="p1"><span class="s1">      document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;</span></p>
-<p class="p1"><span class="s1">    }, stepTime);</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  // Chama o saldo nas etapas corretas</span></p>
-<p class="p1"><span class="s1">  window.addEventListener("DOMContentLoaded", () =&gt; {</span></p>
-<p class="p1"><span class="s1">    startBalance01();</span></p>
-<p class="p1"><span class="s1">  });</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  // ETAPA 2</span></p>
-<p class="p1"><span class="s1">  function mostrarEtapa02() {</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa02").classList.remove("hidden");</span></p>
-<p class="p1"><span class="s1">    startBalance02();</span></p>
-<p class="p1"><span class="s1">    let width = 0;</span></p>
-<p class="p1"><span class="s1">    const progress = document.getElementById("progress");</span></p>
-<p class="p1"><span class="s1">    const percent = document.getElementById("percentage");</span></p>
-<p class="p1"><span class="s1">    const total = 100;</span></p>
-<p class="p1"><span class="s1">    percent.textContent = "0%";</span></p>
-<p class="p1"><span class="s1">    progress.style.width = "0%";</span></p>
-<p class="p1"><span class="s1">    ["phrase1","phrase2","phrase3"].forEach(id=&gt;{</span></p>
-<p class="p1"><span class="s1">      document.getElementById(id).classList.add("hidden");</span></p>
-<p class="p1"><span class="s1">      document.getElementById(id).classList.remove("fade-in");</span></p>
-<p class="p1"><span class="s1">    });</span></p>
-<p class="p1"><span class="s1">    const int = setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1">      if (width &gt;= total) {</span></p>
-<p class="p1"><span class="s1">        clearInterval(int);</span></p>
-<p class="p1"><span class="s1">        mostrarEtapa03();</span></p>
-<p class="p1"><span class="s1">      } else {</span></p>
-<p class="p1"><span class="s1">        width++;</span></p>
-<p class="p1"><span class="s1">        progress.style.width = width + "%";</span></p>
-<p class="p1"><span class="s1">        percent.textContent = width + "%";</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">    }, 30);</span></p>
-<p class="p1"><span class="s1">    setTimeout(() =&gt; mostrarFrase("phrase1"), 1000);</span></p>
-<p class="p1"><span class="s1">    setTimeout(() =&gt; mostrarFrase("phrase2"), 2000);</span></p>
-<p class="p1"><span class="s1">    setTimeout(() =&gt; mostrarFrase("phrase3"), 3000);</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p1"><span class="s1">  function mostrarFrase(id) {</span></p>
-<p class="p1"><span class="s1">    const el = document.getElementById(id);</span></p>
-<p class="p1"><span class="s1">    el.classList.remove("hidden");</span></p>
-<p class="p1"><span class="s1">    el.classList.add("fade-in");</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  // ETAPA 3</span></p>
-<p class="p1"><span class="s1">  function mostrarEtapa03() {</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa02").classList.add("hidden");</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa03").classList.remove("hidden");</span></p>
-<p class="p1"><span class="s1">    startBalance03();</span></p>
-<p class="p1"><span class="s1">    carregarVideos();</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  function carregarVideos() {</span></p>
-<p class="p1"><span class="s1">    const container = document.getElementById("videos-container");</span></p>
-<p class="p1"><span class="s1">    container.innerHTML = "";</span></p>
-<p class="p1"><span class="s1">    const videosPerDay = parseInt(localStorage.getItem("videosPerDay")) || 3;</span></p>
-<p class="p1"><span class="s1">    let typeArray = [];</span></p>
-<p class="p1"><span class="s1">    try {</span></p>
-<p class="p1"><span class="s1">      typeArray = JSON.parse(localStorage.getItem("videoTypes")) || ["Curiosities"];</span></p>
-<p class="p1"><span class="s1">    } catch { typeArray = ["Curiosities"]; }</span></p>
-<p class="p1"><span class="s1">    document.getElementById('selectedTypeText').textContent = typeArray.length &gt; 0 ? typeArray.join(", ") : "Curiosities";</span></p>
-<p class="p1"><span class="s1">    for (let i = 1; i &lt;= videosPerDay; i++) {</span></p>
-<p class="p1"><span class="s1">      const videoDiv = document.createElement("div");</span></p>
-<p class="p1"><span class="s1">      videoDiv.className = "bg-[#18181b] rounded-xl px-5 py-4 video-box flex flex-col justify-start items-start shadow relative";</span></p>
-<p class="p1"><span class="s1">      videoDiv.innerHTML = `</span></p>
-<p class="p1"><span class="s1">        &lt;span class="video-label-pink"&gt;Vídeo ${i}&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="processed-label mt-2"&gt;✅ PROCESSED&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      `;</span></p>
-<p class="p1"><span class="s1">      container.appendChild(videoDiv);</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  function voltarParaEtapa01() {</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa03").classList.add("hidden");</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa01").classList.remove("hidden");</span></p>
-<p class="p1"><span class="s1">    startBalance01();</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  // Função para gerar mais vídeos (voltar ao início)</span></p>
-<p class="p1"><span class="s1">  function generateMoreVideos() {</span></p>
-<p class="p1"><span class="s1">    localStorage.removeItem("videoTypes");</span></p>
-<p class="p1"><span class="s1">    localStorage.removeItem("videosPerDay");</span></p>
-<p class="p1"><span class="s1">    localStorage.removeItem("tiktokHandle");</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa03").classList.add("hidden");</span></p>
-<p class="p1"><span class="s1">    document.getElementById("etapa01").classList.remove("hidden");</span></p>
-<p class="p1"><span class="s1">    startBalance01();</span></p>
-<p class="p1"><span class="s1">    document.querySelectorAll(".video-type").forEach(btn =&gt; btn.classList.remove("selected"));</span></p>
-<p class="p1"><span class="s1">    document.querySelectorAll(".video-count").forEach(btn =&gt; btn.classList.remove("selected"));</span></p>
-<p class="p1"><span class="s1">    document.getElementById("handle").value = "";</span></p>
-<p class="p1"><span class="s1">    selectedTypes = new Set();</span></p>
-<p class="p1"><span class="s1">    selectedCount = null;</span></p>
-<p class="p1"><span class="s1">    document.getElementById("video-count").textContent = "Selected: 0";</span></p>
-<p class="p1"><span class="s1">    document.getElementById("count-result").textContent = "Selected: 0";</span></p>
-<p class="p1"><span class="s1">    validate();</span></p>
-<p class="p1"><span class="s1">  }</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
+<body class="bg-black text-white min-h-screen">
+
+<!-- ETAPA 01 -->
+<div id="etapa01" class="flex items-center justify-center min-h-screen px-2 sm:px-6">
+  <div class="w-full max-w-md sm:max-w-lg px-2 sm:px-4">
+    <div class="caixa-saldo" id="caixaSaldo01">
+      <span class="text-sm font-medium leading-tight">
+        Caixa de saldo: espaçamento superior, espaçamento inferior
+      </span>
+      <span id="balance01" class="balance-box-small">BALANCE: U$ 10.75</span>
+    </div>
+    <div class="flex justify-center">
+      <img src="imagens/logo.png" alt="Logo" class="w-42" />
+    </div>
+    <h2 class="text-center text-2xl font-semibold mt-4">🎥 VIDEO PANEL</h2>
+    <div class="bg-[#121212] rounded-xl p-4 space-y-2 mt-4">
+      <div id="toggle-handle" class="flex justify-between items-center cursor-pointer">
+        <label class="font-bold text-lg">Enter your TikTok</label><span>﹀</span>
+      </div>
+      <input id="handle" type="text" placeholder="@your_tiktok_handle" class="w-full bg-[#1f1f1f] p-3 rounded-md focus:outline-none hidden" />
+    </div>
+    <div class="bg-[#121212] rounded-xl p-4 space-y-4 mt-4">
+      <div id="toggle-types" class="flex justify-between items-center cursor-pointer">
+        <label class="font-bold text-lg">Select video type</label><span>﹀</span>
+      </div>
+      <div id="types-wrapper" class="rounded-lg p-3 space-y-3 hidden">
+        <div id="types-options" class="grid grid-cols-2 gap-2">
+          <button class="video-type option-btn bg-[#1a1a1a]">Motivational</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Comedy</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Curiosities</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Reactions</button>
+          <button class="video-type option-btn comment-replies bg-[#1a1a1a]" style="grid-column: span 1 / span 1;">Comment Replies</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Reviews</button>
+          <button class="video-type option-btn bg-[#1a1a1a]">Trends</button>
+        </div>
+        <p id="video-count" class="text-gray-400 text-sm hidden">Selected: 0</p>
+      </div>
+    </div>
+    <div class="bg-[#121212] rounded-xl p-4 space-y-4 mt-4">
+      <div id="toggle-count" class="flex justify-between items-center cursor-pointer">
+        <label class="font-bold text-lg">How many videos to post per day</label><span>﹀</span>
+      </div>
+      <div id="count-wrapper" class="rounded-lg p-3 space-y-3 hidden">
+        <div id="count-options" class="grid grid-cols-5 gap-2">
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">1</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">2</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">3</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">4</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">5</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">6</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">7</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">8</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">9</button>
+          <button class="video-count option-btn count-btn bg-[#1a1a1a]">10</button>
+        </div>
+        <p id="count-result" class="text-gray-400 text-sm hidden">Selected: 0</p>
+      </div>
+    </div>
+    <button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl mt-6">CONTINUE</button>
+    <p id="info" class="text-center text-sm text-gray-400 mt-2 mb-2">
+      Please fill out your TikTok profile, select at least one video type, and choose videos per day to continue.
+    </p>
+  </div>
+</div>
+
+<!-- ETAPA 02 -->
+<div id="etapa02" class="hidden min-h-screen flex flex-col items-center justify-center px-2 sm:px-6">
+  <div class="w-full max-w-md sm:max-w-lg py-8 mx-auto text-center">
+    <div class="caixa-saldo" id="caixaSaldo02">
+      <span class="text-sm font-medium leading-tight">
+        Caixa de saldo: espaçamento superior, espaçamento inferior
+      </span>
+      <span id="balance02" class="balance-box-small">BALANCE: U$ 27.88</span>
+    </div>
+    <h2 class="text-2xl font-semibold mb-5">🌀 Sending videos...</h2>
+    <img src="imagens/tiktok_logo.png" alt="TikTok Logo" width="100"
+      class="mx-auto mb-4" />
+    <p id="phrase-wait" class="mb-3">⏳ Wait, generating videos...</p>
+    <div class="progress-bar mb-2" style="width:100%;height:8px;background:#1a1a1a;border-radius:10px;overflow:hidden;">
+      <div id="progress" class="progress" style="width:0%;height:100%;background:linear-gradient(90deg,#ff5e62,#00bfff);border-radius:10px;transition:width 0.5s ease-in-out;"></div>
+    </div>
+    <div class="w-full flex justify-between mt-2 text-xs sm:text-base mb-2">
+      <span id="processando">Processing...</span>
+      <span id="percentage">0%</span>
+    </div>
+    <p id="phrase1" class="sub-text hidden text-xs mb-2">📊 Analyzing your content preferences...</p>
+    <p id="phrase2" class="sub-text hidden text-xs mb-2">🤖 Generating creative ideas...</p>
+    <p id="phrase3" class="sub-text hidden text-xs mb-2">✨ Finalizing video concepts...</p>
+  </div>
+</div>
+
+<!-- ETAPA 03 -->
+<div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-start py-10 px-2 bg-black text-white">
+  <main class="w-full max-w-2xl mx-auto flex flex-col items-center">
+    <div class="caixa-saldo" id="caixaSaldo03">
+      <span class="text-sm font-medium leading-tight">
+        Caixa de saldo: espaçamento superior, espaçamento inferior
+      </span>
+      <span id="balance03" class="balance-box-small">BALANCE: U$ 37.45</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-0 text-center">GENERATED VIDEOS</h1>
+    <p id="subtitle" class="text-gray-300 text-base sm:text-lg mb-0 text-center mt-3">
+      Based on selected video types: <span id="selectedTypeText" class="font-semibold">Curiosities</span>
+    </p>
+    <div id="videos-container" class="w-full flex flex-col gap-4 mb-8 mt-6"></div>
+    <div class="btn-bar mt-4">
+      <button class="border border-cyan-400 hover:bg-cyan-900 hover:bg-opacity-30 text-cyan-300 font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
+        onclick="generateMoreVideos()">
+        <svg class="w-4 h-4 mr-1 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A9 9 0 106.62 6.623"/>
+        </svg>
+        Generate more videos
+      </button>
+      <button class="bg-pink-custom hover:bg-pink-600 text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
+        onclick="window.open('https://www.google.com','_blank')">
+        Publish videos
+      </button>
+      <button class="bg-[#222] hover:bg-[#333] text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
+        onclick="voltarParaEtapa01()">
+        Back to configuration
+      </button>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ETAPA 1
+  const handleInput = document.getElementById("handle");
+  const typeButtons = document.querySelectorAll(".video-type");
+  const continueBtn = document.getElementById("continue");
+  const infoText = document.getElementById("info");
+  const toggleHandle = document.getElementById("toggle-handle");
+  const toggleTypes = document.getElementById("toggle-types");
+  const toggleCount = document.getElementById("toggle-count");
+  const typesWrapper = document.getElementById("types-wrapper");
+  const countWrapper = document.getElementById("count-wrapper");
+  const videoCountText = document.getElementById("video-count");
+  const countResult = document.getElementById("count-result");
+  let selectedTypes = new Set();
+  let selectedCount = null;
+
+  toggleHandle.addEventListener("click", () => handleInput.classList.toggle("hidden"));
+  toggleTypes.addEventListener("click", () => {
+    typesWrapper.classList.toggle("hidden");
+    videoCountText.classList.toggle("hidden");
+  });
+  toggleCount.addEventListener("click", () => {
+    countWrapper.classList.toggle("hidden");
+    countResult.classList.toggle("hidden");
+  });
+
+  typeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const value = btn.textContent.trim();
+      btn.classList.toggle("selected");
+      if (selectedTypes.has(value)) {
+        selectedTypes.delete(value);
+      } else {
+        selectedTypes.add(value);
+      }
+      videoCountText.textContent = `Selected: ${selectedTypes.size}`;
+      validate();
+    });
+  });
+
+  document.getElementById("count-options").addEventListener("click", event => {
+    const btn = event.target.closest(".video-count");
+    if (!btn) return;
+    selectedCount = parseInt(btn.textContent.trim());
+    document.querySelectorAll(".video-count").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    countResult.textContent = `Selected: ${selectedCount}`;
+    validate();
+  });
+
+  handleInput.addEventListener("input", validate);
+
+  function validate() {
+    const filled = handleInput.value.trim() !== "" && selectedTypes.size > 0 && selectedCount !== null;
+    continueBtn.disabled = !filled;
+    infoText.classList.toggle("hidden", filled);
+    continueBtn.className = filled
+      ? "w-full py-3 bg-pink-custom text-white font-bold rounded-xl mt-6"
+      : "w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl mt-6";
+  }
+
+  continueBtn.addEventListener("click", () => {
+    localStorage.setItem("tiktokHandle", handleInput.value.trim());
+    localStorage.setItem("videoTypes", JSON.stringify([...selectedTypes]));
+    localStorage.setItem("videosPerDay", selectedCount);
+    document.getElementById("etapa01").classList.add("hidden");
+    mostrarEtapa02();
+  });
+
+  // SALDO DINÂMICO (em todas etapas)
+  let balance1 = 10.75;
+  let balance2 = 27.88;
+  let balance3 = 37.45;
+  let interval1, interval2, interval3;
+  let stepTime = 1500;
+
+  function startBalance01() {
+    clearInterval(interval1);
+    document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;
+    interval1 = setInterval(() => {
+      balance1 *= 1.2;
+      document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;
+    }, stepTime);
+  }
+  function startBalance02() {
+    clearInterval(interval2);
+    document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;
+    interval2 = setInterval(() => {
+      balance2 *= 1.2;
+      document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;
+    }, stepTime);
+  }
+  function startBalance03() {
+    clearInterval(interval3);
+    document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
+    interval3 = setInterval(() => {
+      balance3 *= 1.2;
+      document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
+    }, stepTime);
+  }
+
+  // Chama o saldo nas etapas corretas
+  window.addEventListener("DOMContentLoaded", () => {
+    startBalance01();
+  });
+
+  // ETAPA 2
+  function mostrarEtapa02() {
+    document.getElementById("etapa02").classList.remove("hidden");
+    startBalance02();
+    let width = 0;
+    const progress = document.getElementById("progress");
+    const percent = document.getElementById("percentage");
+    const total = 100;
+    percent.textContent = "0%";
+    progress.style.width = "0%";
+    ["phrase1","phrase2","phrase3"].forEach(id=>{
+      document.getElementById(id).classList.add("hidden");
+      document.getElementById(id).classList.remove("fade-in");
+    });
+    const int = setInterval(() => {
+      if (width >= total) {
+        clearInterval(int);
+        mostrarEtapa03();
+      } else {
+        width++;
+        progress.style.width = width + "%";
+        percent.textContent = width + "%";
+      }
+    }, 30);
+    setTimeout(() => mostrarFrase("phrase1"), 1000);
+    setTimeout(() => mostrarFrase("phrase2"), 2000);
+    setTimeout(() => mostrarFrase("phrase3"), 3000);
+  }
+  function mostrarFrase(id) {
+    const el = document.getElementById(id);
+    el.classList.remove("hidden");
+    el.classList.add("fade-in");
+  }
+
+  // ETAPA 3
+  function mostrarEtapa03() {
+    document.getElementById("etapa02").classList.add("hidden");
+    document.getElementById("etapa03").classList.remove("hidden");
+    startBalance03();
+    carregarVideos();
+  }
+
+  function carregarVideos() {
+    const container = document.getElementById("videos-container");
+    container.innerHTML = "";
+    const videosPerDay = parseInt(localStorage.getItem("videosPerDay")) || 3;
+    let typeArray = [];
+    try {
+      typeArray = JSON.parse(localStorage.getItem("videoTypes")) || ["Curiosities"];
+    } catch { typeArray = ["Curiosities"]; }
+    document.getElementById('selectedTypeText').textContent = typeArray.length > 0 ? typeArray.join(", ") : "Curiosities";
+    for (let i = 1; i <= videosPerDay; i++) {
+      const videoDiv = document.createElement("div");
+      videoDiv.className = "bg-[#18181b] rounded-xl px-5 py-4 video-box flex flex-col justify-start items-start shadow relative";
+      videoDiv.innerHTML = `
+        <span class="video-label-pink">Vídeo ${i}</span>
+        <span class="processed-label mt-2">✅ PROCESSED</span>
+      `;
+      container.appendChild(videoDiv);
+    }
+  }
+
+  function voltarParaEtapa01() {
+    document.getElementById("etapa03").classList.add("hidden");
+    document.getElementById("etapa01").classList.remove("hidden");
+    startBalance01();
+  }
+
+  // Função para gerar mais vídeos (voltar ao início)
+  function generateMoreVideos() {
+    localStorage.removeItem("videoTypes");
+    localStorage.removeItem("videosPerDay");
+    localStorage.removeItem("tiktokHandle");
+    document.getElementById("etapa03").classList.add("hidden");
+    document.getElementById("etapa01").classList.remove("hidden");
+    startBalance01();
+    document.querySelectorAll(".video-type").forEach(btn => btn.classList.remove("selected"));
+    document.querySelectorAll(".video-count").forEach(btn => btn.classList.remove("selected"));
+    document.getElementById("handle").value = "";
+    selectedTypes = new Set();
+    selectedCount = null;
+    document.getElementById("video-count").textContent = "Selected: 0";
+    document.getElementById("count-result").textContent = "Selected: 0";
+    validate();
+  }
+</script>
 </body>
 </html>
+
